@@ -1,5 +1,7 @@
 const express = require('express')
-var cors = require('cors')
+const cors = require('cors')
+
+const { dbConnection } = require('../db/config');
 
 // Se crea la clase Server -- The server class is created
 class Server {
@@ -13,12 +15,19 @@ class Server {
 
         this.usersPath = '/api/users';
 
+        // Conectar a DB - DB Connect
+        this.conectarDB();
+
         // Middlewears - Programas intermedios
         this.controlaracceso();
         
         // Rutas de la app -- App routes
         this.rutas();
 
+    }
+
+    async conectarDB() {
+        await dbConnection();
     }
 
     //Métodos de control - Middlewears Method

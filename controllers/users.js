@@ -1,49 +1,79 @@
 // desestructurando express para obtener solicitudes y respuestas -- destructuring express to get request & response
 const { response, request } = require('express');
+const bcryptjs = require('bcryptjs');
+
+
+const User = require('../models/user');
 
 // Lista de metodos para manejar usuarios -- List of functions to manage users
 
-const usersGet = (req = request, res = response) => {
+const usersGet = async (req = request, res = response) => {
 
-    const {q, nombre=' ', apikey} = req.query;
+    //const {q, nombre='No name', apikey, page = 1, limit } = req.query;
+    const { limite = 5, desde = 0 } = req.query;
+    const query = { estado: true };
+
+    const [ total, users ] = await Promise.all([
+        User.countDocuments( query ),
+        User.find( query )
+        .skip( Number(desde) )
+        .limit( Number(limite) )
+    ]);
     
-    res.json({
-        mensaje: 'get API desde el controlador',
-        q,
-        nombre,
-        apikey
+    res.json({        
+        total,
+        users
     });
 
   };
 
-const usersPut = (req, res = response) => {
+// UPDATE DATA
+const usersPut = async (req, res = response) => {
 
-    const id = req.params.id;
+    const { id } = req.params;
+    const { _id, password, google, correo, ...resto } = req.body;
 
-    res.json({
-        mensaje: 'put API desde el controlador',
-        id
-    });
+    // VALIDATE ALL WITH DB
+    if ( password ) {
+        //crypt pass
+        const salt = bcryptjs.genSaltSync();
+        resto.password = bcryptjs.hashSync( password, salt );
+    }
 
-};
+    const user = await User.findByIdAndUpdate( id, resto );
 
-const usersPost = (req, res = response) => {
-
-    const {nombre, edad} = req.body;
-
-    res.json({
-        mensaje: 'post API desde el controlador',
-        nombre,
-        edad
-    });
+    res.json( user );
 
 };
 
-const usersDelete = (req, res = response) => {
+// INSERT DATA
+const usersPost = async (req, res = response) => {
 
-res.json({
-    mensaje: 'delete API desde el controlador'
-});
+    const { nombre, correo, password, rol } = req.body;
+    const usuario = new User({ nombre, correo, password, rol });
+
+    //crypt password
+    const salt = bcryptjs.genSaltSync();
+    usuario.password = bcryptjs.hashSync( password, salt );
+
+    // save in DB
+    await usuario.save();
+
+    res.json( usuario );
+
+};
+
+const usersDelete = async (req, res = response) => {
+
+    const { id } = req.params;
+
+    //Phisical delete row
+    //const user = await User.findByIdAndDelete( id );
+
+    //Logic delete row
+    const user = await User.findByIdAndUpdate( id, { estado: false } );
+
+    res.json( user );
 
 };
 
