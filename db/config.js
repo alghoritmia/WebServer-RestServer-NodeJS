@@ -1,3 +1,4 @@
+// mongo db connection
 const mongoose = require('mongoose');
 
 const dbConnection = async() => {
@@ -9,12 +10,12 @@ const dbConnection = async() => {
                 useUnifiedTopology: true
         });
 
-        console.log('Base de datos conectada');
+        console.log('Database connected');
 
     } catch (error) {
 
         console.log(error);
-        throw new Error(' Error al conectar con DB ');
+        throw new Error(' Error to connect DB ');
     }
 
 }

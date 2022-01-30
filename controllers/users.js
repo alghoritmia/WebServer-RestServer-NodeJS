@@ -1,12 +1,12 @@
 // desestructurando express para obtener solicitudes y respuestas -- destructuring express to get request & response
 const { response, request } = require('express');
-const bcryptjs = require('bcryptjs');
+const bcryptjs = require('bcryptjs'); //import library to encrypt keys 
 
-
-const User = require('../models/user');
+const User = require('../models/user'); //import user model from database
 
 // Lista de metodos para manejar usuarios -- List of functions to manage users
 
+//get user data
 const usersGet = async (req = request, res = response) => {
 
     //const {q, nombre='No name', apikey, page = 1, limit } = req.query;
@@ -27,32 +27,33 @@ const usersGet = async (req = request, res = response) => {
 
   };
 
-// UPDATE DATA
+// 
+//update user data
 const usersPut = async (req, res = response) => {
 
     const { id } = req.params;
     const { _id, password, google, correo, ...resto } = req.body;
-
-    // VALIDATE ALL WITH DB
+    
     if ( password ) {
         //crypt pass
         const salt = bcryptjs.genSaltSync();
         resto.password = bcryptjs.hashSync( password, salt );
     }
 
+    // VALIDATE ALL WITH DB
     const user = await User.findByIdAndUpdate( id, resto );
 
     res.json( user );
 
 };
 
-// INSERT DATA
+// insert user data
 const usersPost = async (req, res = response) => {
 
     const { nombre, correo, password, rol } = req.body;
     const usuario = new User({ nombre, correo, password, rol });
 
-    //crypt password
+    //encrypt password
     const salt = bcryptjs.genSaltSync();
     usuario.password = bcryptjs.hashSync( password, salt );
 
@@ -63,6 +64,7 @@ const usersPost = async (req, res = response) => {
 
 };
 
+//delete user data
 const usersDelete = async (req, res = response) => {
 
     const { id } = req.params;
@@ -76,6 +78,7 @@ const usersDelete = async (req, res = response) => {
     res.json( user );
 
 };
+
 
 const usersPatch = (req, res = response) => {
 

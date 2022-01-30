@@ -1,3 +1,4 @@
+//middlewear to validate data via express-validator
 const { validationResult } = require('express-validator');
 
 const validarCampos = ( req, res, next ) => {

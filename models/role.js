@@ -1,3 +1,5 @@
+//role model for mongoDB
+
 const { Schema, model } = require('mongoose');
 
 const RoleSchema =  Schema({

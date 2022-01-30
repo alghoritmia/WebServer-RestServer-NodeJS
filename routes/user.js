@@ -14,8 +14,8 @@ router.get('/', usersGet );
 
 // POST REQUEST ENDPOINT
 router.post('/', [
-    check('nombre', 'El nombre es Obligatorio').not().isEmpty(),
-    check('password', 'El password debe ser de más de 6 letras').isLength({ min: 6 }),
+    check('nombre', 'Name is required').not().isEmpty(),
+    check('password', 'The password must be more than 6 letters').isLength({ min: 6 }),
     //check('correo', 'El correo no es válido').isEmail(),
     //check('rol', 'No es un rol válido').isIn('ADMIN_ROLE', 'USER_ROLE'),
     check('correo').custom( existeEmail ),
@@ -25,7 +25,7 @@ router.post('/', [
 
  // PUT REQUEST ENDPOINT
 router.put('/:id',[
-    check('id', 'No es un ID Válido').isMongoId(),
+    check('id', 'It is not a valid ID').isMongoId(),
     check('id').custom( existeUserPorId ),
     check('rol').custom( esRoleValido ),
     validarCampos
@@ -33,7 +33,7 @@ router.put('/:id',[
 
  // DELETE REQUEST ENDPOINT
 router.delete('/:id',[
-    check('id', 'No es un ID Válido').isMongoId(),
+    check('id', 'It is not a valid ID').isMongoId(),
     check('id').custom( existeUserPorId ),
     validarCampos
 ], usersDelete );
