@@ -14,22 +14,22 @@ This demo app (Webserver & Restserver) created using NodeJS with express and Mon
 
 * {URL}:{PORT}/api/users/{id} for PUT, DELETE ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {id} = user id)
 
-# -- Estructura de datos DB / DB data structure --
-# -- Users & Roles Object collections --
+# Estructura de datos DB / DB data structure
+-- Users & Roles Object collections --
 
 USERS:
-    _id: objetcId,
-    nombre: String,
-    correo: String,
-    password: String,
-    img: String
-    rol: String - enum: ['ADMIN_ROLE', 'USER_ROLE']
-    estado: Boolean,
-    google: Boolean
+* _id: objetcId,
+* nombre: String,
+* correo: String,
+* password: String,
+* img: String
+* rol: String - enum: ['ADMIN_ROLE', 'USER_ROLE']
+* estado: Boolean,
+* google: Boolean
 
 ROLES:
-    _id: objetcId,
-    rol: String - enum: ['ADMIN_ROLE', 'USER_ROLE']
+*  _id: objetcId,
+* rol: String - enum: ['ADMIN_ROLE', 'USER_ROLE']
 
 # Packages used:
 
