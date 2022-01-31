@@ -14,6 +14,7 @@ class Server {
         this.port = process.env.PORT;
 
         this.usersPath = '/api/users';
+        this.authPath = '/api/auth';
 
         // Conectar a DB - DB Connect
         this.conectarDB();
@@ -47,6 +48,7 @@ class Server {
     // Se crean las rutas -- Routes are created
     rutas() {
 
+        this.app.use('/api/auth', require('../routes/auth'));
         this.app.use('/api/users', require('../routes/user'));
 
         //ADD MORE ROUTES - SE PUEDE AGREGAR MÁS RUTAS

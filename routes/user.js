@@ -2,10 +2,26 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 const { esRoleValido, existeEmail, existeUserPorId } = require('../helpers/db-validators');
-const { validarCampos } = require('../Middlewears/Validate');
+
+// const { validateJWT } = require('../middlewears/validar-jwt');
+// const { validarCampos } = require('../Middlewears/Validate');
+// const { tieneRole } = require('../Middlewears/validar-roles');
+
+const {
+    validarCampos,
+    validateJWT,
+    tieneRole,
+    esAdminRole
+} = require('../middlewears');
+
 
 // desestructurando users para obtener Paths -- destructuring users to get paths
-const { usersGet, usersPost, usersPut, usersDelete, usersPatch } = require('../controllers/users');
+const { 
+    usersGet, 
+    usersPost, 
+    usersPut, 
+    usersDelete, 
+    usersPatch } = require('../controllers/users');
 
 const router = Router(); 
 
@@ -32,7 +48,10 @@ router.put('/:id',[
 ], usersPut );
 
  // DELETE REQUEST ENDPOINT
-router.delete('/:id',[
+router.delete('/:id',[    
+    validateJWT,
+    //esAdminRole,
+    tieneRole('USER_ROLE', 'VENTAS_ROLE'),
     check('id', 'It is not a valid ID').isMongoId(),
     check('id').custom( existeUserPorId ),
     validarCampos

@@ -74,8 +74,9 @@ const usersDelete = async (req, res = response) => {
 
     //Logic delete row
     const user = await User.findByIdAndUpdate( id, { estado: false } );
+    const userAutenticado = req.user;
 
-    res.json( user );
+    res.json({ user, userAutenticado });
 
 };
 

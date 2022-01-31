@@ -14,6 +14,9 @@ This demo app (Webserver & Restserver) created using NodeJS with express and Mon
 
 * {URL}:{PORT}/api/users/{id} for PUT, DELETE ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {id} = user id)
 
+* {URL}:{PORT}/api/auth/login for Login with JWT (Json Web Token) ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode)
+
+
 # Estructura de datos DB / DB data structure
 -- Users & Roles Object collections --
 
@@ -39,3 +42,4 @@ ROLES:
 * express
 * express-validator
 * mongoose
+* jsonwebtoken
