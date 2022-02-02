@@ -77,6 +77,7 @@ PRODUCTS
 ```
 
 # Packages used:
+```
 * bcrypt js
 * corsets
 * dowry
@@ -85,3 +86,4 @@ PRODUCTS
 * mongoose
 * jsonwebtoken
 * google-auth-library
+```
