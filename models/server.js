@@ -11,7 +11,8 @@ class Server {
         this.app = express();
 
         // puerto establecido para escuchar al servidor -- Port to listen
-        this.port = process.env.PORT;
+        //this.port = process.env.PORT;
+        this.port = 3000;
 
         this.paths = {            
             auth:       '/api/auth',

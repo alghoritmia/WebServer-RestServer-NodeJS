@@ -5,7 +5,9 @@ const dbConnection = async() => {
 
     try {
 
-        await mongoose.connect( process.env.MONGODB_CNN, {
+        //await mongoose.connect( process.env.MONGODB_CNN, {
+        await mongoose.connect( 'mongodb+srv://user_restserver_node:8a-xRqFgHqr-NMp@miclustercafe.bzfap.mongodb.net/miDB', {
+
                 useNewUrlParser: true,
                 useUnifiedTopology: true
         });
