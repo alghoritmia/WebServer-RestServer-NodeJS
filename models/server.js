@@ -13,8 +13,13 @@ class Server {
         // puerto establecido para escuchar al servidor -- Port to listen
         this.port = process.env.PORT;
 
-        this.usersPath = '/api/users';
-        this.authPath = '/api/auth';
+        this.paths = {            
+            auth:       '/api/auth',
+            buscar:     '/api/buscar',
+            categories: '/api/categories',
+            products:   '/api/products',
+            users:      '/api/users'
+        }
 
         // Conectar a DB - DB Connect
         this.conectarDB();
@@ -48,8 +53,11 @@ class Server {
     // Se crean las rutas -- Routes are created
     rutas() {
 
-        this.app.use('/api/auth', require('../routes/auth'));
-        this.app.use('/api/users', require('../routes/user'));
+        this.app.use(this.paths.auth, require('../routes/auth'));  
+        this.app.use(this.paths.buscar, require('../routes/buscar'));       
+        this.app.use(this.paths.categories, require('../routes/categories'));
+        this.app.use(this.paths.products, require('../routes/products'));
+        this.app.use(this.paths.users, require('../routes/user'));
 
         //ADD MORE ROUTES - SE PUEDE AGREGAR MÁS RUTAS
     

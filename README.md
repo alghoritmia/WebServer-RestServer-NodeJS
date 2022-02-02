@@ -14,6 +14,24 @@ This demo app (Webserver & Restserver) created using NodeJS with express and Mon
 
 * {URL}:{PORT}/api/users/{id} for PUT, DELETE ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {id} = user id)
 
+* {URL}:{PORT}/api/categories for POST, GET ... ({URL} = localhost, {PORT} = 8080 for Dev Mode)
+
+* {URL}:{PORT}/api/categories/{id} for GET ... ({URL} = localhost, {PORT} = 8080 for Dev Mode)
+
+* {URL}:{PORT}/api/categories?limite={limit}}&desde={from} for GET ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {limit} = number of objects to request, {from} = from which object you want to request)
+
+* {URL}:{PORT}/api/categories/{id} for PUT, DELETE ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {id} = user id)
+
+* {URL}:{PORT}/api/products for POST, GET ... ({URL} = localhost, {PORT} = 8080 for Dev Mode)
+
+* {URL}:{PORT}/api/products/{id} for GET ... ({URL} = localhost, {PORT} = 8080 for Dev Mode)
+
+* {URL}:{PORT}/api/products?limite={limit}}&desde={from} for GET ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {limit} = number of objects to request, {from} = from which object you want to request)
+
+* {URL}:{PORT}/api/products/{id} for PUT, DELETE ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {id} = user id)
+
+* {URL}:{PORT}/api/{collection}/{term} for GET ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {collection} = [categories, products, roles, users], {term} = term to search )
+
 * {URL}:{PORT}/api/auth/login for Login with JWT (Json Web Token) ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode)
 
 
@@ -34,8 +52,24 @@ ROLES:
 *  _id: objetcId,
 * rol: String - enum: ['ADMIN_ROLE', 'USER_ROLE']
 
-# Packages used:
+CATEGORIES
+* _id: objetcId,
+* nombre: String,
+* estado: Boolean,
+* usuario: User Id
 
+PRODUCTS
+* _id:objetcId,
+* nombre: String,
+* estado: Boolean,
+* usuario: User Id
+* precio: Number
+* categoria: Category Id
+* descripcion: String,
+* disponible: Boolean
+
+
+# Packages used:
 * bcrypt js
 * corsets
 * dowry
