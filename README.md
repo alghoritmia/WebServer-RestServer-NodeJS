@@ -8,6 +8,7 @@ Esta demo app (Webserver & Restserver) creada usando NodeJS con express y MongoD
 
 This demo app (Webserver & Restserver) created using NodeJS with express and MongoDB, allows to consume endpoints from a collection of user objects with roles through routes such as:
 
+```
 * {URL}:{PORT}/api/users for POST, GET ... ({URL} = localhost, {PORT} = 8080 for Dev Mode)
 
 * {URL}:{PORT}/api/users?limite={limit}}&desde={from} for GET ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {limit} = number of objects to request, {from} = from which object you want to request)
@@ -33,12 +34,13 @@ This demo app (Webserver & Restserver) created using NodeJS with express and Mon
 * {URL}:{PORT}/api/{collection}/{term} for GET ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {collection} = [categories, products, roles, users], {term} = term to search )
 
 * {URL}:{PORT}/api/auth/login for Login with JWT (Json Web Token) ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode)
-
+```
 
 # Estructura de datos DB / DB data structure
 -- Users & Roles Object collections --
 
 USERS:
+```
 * _id: objetcId,
 * nombre: String,
 * correo: String,
@@ -47,18 +49,23 @@ USERS:
 * rol: String - enum: ['ADMIN_ROLE', 'USER_ROLE']
 * estado: Boolean,
 * google: Boolean
-
+```
 ROLES:
+```
 *  _id: objetcId,
 * rol: String - enum: ['ADMIN_ROLE', 'USER_ROLE']
+```
 
 CATEGORIES
+```
 * _id: objetcId,
 * nombre: String,
 * estado: Boolean,
 * usuario: User Id
+```
 
 PRODUCTS
+```
 * _id:objetcId,
 * nombre: String,
 * estado: Boolean,
@@ -67,7 +74,7 @@ PRODUCTS
 * categoria: Category Id
 * descripcion: String,
 * disponible: Boolean
-
+```
 
 # Packages used:
 * bcrypt js
