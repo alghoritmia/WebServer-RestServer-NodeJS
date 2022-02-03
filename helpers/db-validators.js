@@ -1,58 +1,62 @@
-//validation functions
-const {
-    Category,
-    Role,
-    Server,
-    User,
-    Product
-} = require('../models');
+const Role = require('../models/role');
+const { Usuario, Categoria, Producto } = require('../models');
 
 const esRoleValido = async(rol = '') => {
+
     const existeRol = await Role.findOne({ rol });
-    if  (!existeRol ){
-        throw new Error(`Role: ${ rol } is not registered`);
+    if ( !existeRol ) {
+        throw new Error(`El rol ${ rol } no está registrado en la BD`);
     }
 }
 
-const existeEmail = async(correo = '') => {
+const emailExiste = async( correo = '' ) => {
 
-    const existeEmail = await User.findOne({ correo });
-    if ( existeEmail ){
-        throw new Error(`E-mail: ${ correo } is already registered`);
-    }
-
-}
-
-const existeUserPorId = async( id ) => {
-
-    const existeUser = await User.findById( id );
-    if ( !existeUser ){
-        throw new Error(`Id: ${ id } does not exist`);
-    }
-
-}
-
-const existeCategoryPorId = async( id ) => {
-
-    const existeCategory = await Category.findById( id );
-    if ( !existeCategory ){
-        throw new Error(`Category Id: ${ id } does not exist`);
+    // Verificar si el correo existe
+    const existeEmail = await Usuario.findOne({ correo });
+    if ( existeEmail ) {
+        throw new Error(`El correo: ${ correo }, ya está registrado`);
     }
 }
 
-const existeProductPorId = async( id ) => {
+const existeUsuarioPorId = async( id ) => {
 
-    const existeProduct = await Product.findById( id );
-    if ( !existeProduct ){
-        throw new Error(`Produc Id: ${ id } does not exist`);
+    // Verificar si el correo existe
+    const existeUsuario = await Usuario.findById(id);
+    if ( !existeUsuario ) {
+        throw new Error(`El id no existe ${ id }`);
     }
-
 }
+
+/**
+ * Categorias
+ */
+const existeCategoriaPorId = async( id ) => {
+
+    // Verificar si el correo existe
+    const existeCategoria = await Categoria.findById(id);
+    if ( !existeCategoria ) {
+        throw new Error(`El id no existe ${ id }`);
+    }
+}
+
+/**
+ * Productos
+ */
+const existeProductoPorId = async( id ) => {
+
+    // Verificar si el correo existe
+    const existeProducto = await Producto.findById(id);
+    if ( !existeProducto ) {
+        throw new Error(`El id no existe ${ id }`);
+    }
+}
+
 
 module.exports = {
     esRoleValido,
-    existeEmail,
-    existeUserPorId,
-    existeCategoryPorId,
-    existeProductPorId
+    emailExiste,
+    existeUsuarioPorId,
+    existeCategoriaPorId,
+    existeProductoPorId
 }
+

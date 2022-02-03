@@ -1,12 +1,11 @@
-//role model for mongoDB
-
 const { Schema, model } = require('mongoose');
 
-const RoleSchema =  Schema({
+const RoleSchema = Schema({
     rol: {
         type: String,
-        required: [true, 'The Role is required'],
+        required: [true, 'El rol es obligatorio']
     }
-})
+});
+
 
 module.exports = model( 'Role', RoleSchema );

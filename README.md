@@ -2,44 +2,44 @@
 
 Run ´´´ npm install ´´´ to rebuild Node modules
 
-# -- Acerca de la App / About the App --
+### -- Acerca de la App / About the App --
 
 Esta demo app (Webserver & Restserver) creada usando NodeJS con express y MongoDB. Permite consumir endpoints de una colección de objetos de usuarios con roles a través de rutas tales como:
 
 This demo app (Webserver & Restserver) created using NodeJS with express and MongoDB, allows to consume endpoints from a collection of user objects with roles through routes such as:
 
 ```
-* {URL}:{PORT}/api/users for POST, GET ... ({URL} = localhost, {PORT} = 8080 for Dev Mode)
+* {URL}:{PORT}/api/usuarios for POST, GET ... ({URL} = localhost, {PORT} = 8080 for Dev Mode)
 
-* {URL}:{PORT}/api/users?limite={limit}}&desde={from} for GET ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {limit} = number of objects to request, {from} = from which object you want to request)
+* {URL}:{PORT}/api/usuarios?limite={limit}}&desde={from} for GET ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {limit} = number of objects to request, {from} = from which object you want to request)
 
-* {URL}:{PORT}/api/users/{id} for PUT, DELETE ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {id} = user id)
+* {URL}:{PORT}/api/usuarios/{id} for PUT, DELETE ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {id} = user id)
 
-* {URL}:{PORT}/api/categories for POST, GET ... ({URL} = localhost, {PORT} = 8080 for Dev Mode)
+* {URL}:{PORT}/api/categorias for POST, GET ... ({URL} = localhost, {PORT} = 8080 for Dev Mode)
 
-* {URL}:{PORT}/api/categories/{id} for GET ... ({URL} = localhost, {PORT} = 8080 for Dev Mode)
+* {URL}:{PORT}/api/categorias/{id} for GET ... ({URL} = localhost, {PORT} = 8080 for Dev Mode)
 
-* {URL}:{PORT}/api/categories?limite={limit}}&desde={from} for GET ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {limit} = number of objects to request, {from} = from which object you want to request)
+* {URL}:{PORT}/api/categorias?limite={limit}}&desde={from} for GET ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {limit} = number of objects to request, {from} = from which object you want to request)
 
-* {URL}:{PORT}/api/categories/{id} for PUT, DELETE ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {id} = user id)
+* {URL}:{PORT}/api/categorias/{id} for PUT, DELETE ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {id} = user id)
 
-* {URL}:{PORT}/api/products for POST, GET ... ({URL} = localhost, {PORT} = 8080 for Dev Mode)
+* {URL}:{PORT}/api/productos for POST, GET ... ({URL} = localhost, {PORT} = 8080 for Dev Mode)
 
-* {URL}:{PORT}/api/products/{id} for GET ... ({URL} = localhost, {PORT} = 8080 for Dev Mode)
+* {URL}:{PORT}/api/productos/{id} for GET ... ({URL} = localhost, {PORT} = 8080 for Dev Mode)
 
-* {URL}:{PORT}/api/products?limite={limit}}&desde={from} for GET ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {limit} = number of objects to request, {from} = from which object you want to request)
+* {URL}:{PORT}/api/productos?limite={limit}}&desde={from} for GET ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {limit} = number of objects to request, {from} = from which object you want to request)
 
-* {URL}:{PORT}/api/products/{id} for PUT, DELETE ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {id} = user id)
+* {URL}:{PORT}/api/productos/{id} for PUT, DELETE ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {id} = user id)
 
 * {URL}:{PORT}/api/{collection}/{term} for GET ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode, {collection} = [categories, products, roles, users], {term} = term to search )
 
 * {URL}:{PORT}/api/auth/login for Login with JWT (Json Web Token) ... ({URL} = localhost:8080, {PORT} = 8080 for Dev Mode)
 ```
 
-# Estructura de datos DB / DB data structure
+### Estructura de datos DB / DB data structure
 -- Users & Roles Object collections --
 
-USERS:
+USUARIOS:
 ```
 * _id: objetcId,
 * nombre: String,
@@ -56,7 +56,7 @@ ROLES:
 * rol: String - enum: ['ADMIN_ROLE', 'USER_ROLE']
 ```
 
-CATEGORIES
+CATEGORIAS
 ```
 * _id: objetcId,
 * nombre: String,
@@ -64,7 +64,7 @@ CATEGORIES
 * usuario: User Id
 ```
 
-PRODUCTS
+PRODUCTOS
 ```
 * _id:objetcId,
 * nombre: String,
@@ -76,14 +76,16 @@ PRODUCTS
 * disponible: Boolean
 ```
 
-# Packages used:
+### Packages used:
 ```
-* bcrypt js
-* corsets
-* dowry
-* express
-* express-validator
-* mongoose
-* jsonwebtoken
-* google-auth-library
+"bcryptjs": "^2.4.3",
+"cors": "^2.8.5",
+"dotenv": "^8.2.0",
+"express": "^4.17.1",
+"express-validator": "^6.9.2",
+"google-auth-library": "^6.1.6",
+"jsonwebtoken": "^8.5.1",
+"mongoose": "^5.11.15"
 ```
+
+    

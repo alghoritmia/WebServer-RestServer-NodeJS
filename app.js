@@ -1,9 +1,9 @@
 require('dotenv').config();
-const Servidor = require('./models/server'); // Se importa para utilizar la clase server -- import server class
+const Server = require('./models/server');
 
-// Se crea una instancia del Servidor - An instance of the server is created
-const servidor = new Servidor();
 
-//listen server
-servidor.escuchar(); 
+const server = new Server();
 
+
+
+server.listen();

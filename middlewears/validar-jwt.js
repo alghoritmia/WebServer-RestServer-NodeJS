@@ -16,7 +16,7 @@ const validateJWT = async ( req = request, res = response, next ) => {
 
     try {
 
-            const { uid } = jwt.verify( webtoken, 'Est03sMyPub1cK3y23' );
+            const { uid } = jwt.verify( webtoken, process.env.SECRETKEY );
 
             //console.log( payload );
             const user = await User.findById( uid ); //buscamos el usuario del uid

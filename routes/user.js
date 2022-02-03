@@ -14,7 +14,6 @@ const {
     esAdminRole
 } = require('../middlewears');
 
-
 // desestructurando users para obtener Paths -- destructuring users to get paths
 const { 
     usersGet, 

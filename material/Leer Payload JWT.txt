@@ -1,0 +1,9 @@
+Código para leer el payload y fecha de expiración de un Token - NO USAR
+
+function parseJwt (token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace('-', '+').replace('_', '/');
+    return JSON.parse(window.atob(base64));
+};
+
+demo jwt (from jwt.io) = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IldhbHRlciBMdW5hIiwiaWF0IjoxNTE2MjM5MDIyfQ.S5YTZ_E-I0L-B4ClgJtpSBVT6UFDwHkkcjSCLLCwbe8
