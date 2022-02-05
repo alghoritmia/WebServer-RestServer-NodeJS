@@ -104,15 +104,15 @@ const mostrarImagen = async(req, res = response ) => {
             return res.status(500).json({ msg: 'Se me olvidó validar esto'});
     }
 
-    // Limpiar imágenes previas
-    if ( modelo.img ) {
-        // Hay que borrar la imagen del servidor
+    // mostrar imagen sin CLoudinary
+    if ( modelo.img ) {        
         const pathImagen = path.join( __dirname, '../uploads', coleccion, modelo.img );
         if ( fs.existsSync( pathImagen ) ) {
             return res.sendFile( pathImagen )
         }
-    }
+    }    
 
+    //mostrar imagen no-disponible sin CLoudinary
     const pathImagen = path.join( __dirname, '../assets/no-image.jpg');
     res.sendFile( pathImagen );
 
