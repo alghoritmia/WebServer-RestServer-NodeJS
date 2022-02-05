@@ -2,3 +2,5 @@
 material/
 node_modules/
 .env
+uploads/usuarios/**.*
+uploads/productos/**.*
